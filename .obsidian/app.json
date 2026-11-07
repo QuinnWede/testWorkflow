@@ -1,0 +1,7 @@
+{
+  "useMarkdownLinks": true,
+  "newFileLocation": "root",
+  "attachmentFolderPath": "./assets",
+  "defaultViewMode": "source",
+  "strictLineBreaks": false
+}
