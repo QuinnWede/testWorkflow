@@ -1,0 +1,215 @@
+/* ==========================================================================
+   HuskyADAPT Adaptation Manual Stylesheet (WeasyPrint / Paged Media)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* --- Page Geometry & Running Metadata --- */
+@page {
+  size: letter portrait;
+  margin: 20mm 16mm 20mm 16mm;
+
+  @top-left {
+    content: "HuskyADAPT Adaptation Guide";
+    font-family: 'Lato', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #4a2f83;
+    border-bottom: 0.5pt solid #cbd5e1;
+    padding-bottom: 4pt;
+    vertical-align: bottom;
+  }
+
+  @top-right {
+    content: string(doc-title);
+    font-family: 'Lato', sans-serif;
+    font-size: 8.5pt;
+    color: #595959;
+    border-bottom: 0.5pt solid #cbd5e1;
+    padding-bottom: 4pt;
+    vertical-align: bottom;
+  }
+
+  @bottom-left {
+    content: "Accessible Design And Play Technology";
+    font-family: 'Lato', sans-serif;
+    font-size: 8pt;
+    color: #595959;
+    border-top: 0.5pt solid #cbd5e1;
+    padding-top: 4pt;
+  }
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: 'Lato', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #000000;
+    border-top: 0.5pt solid #cbd5e1;
+    padding-top: 4pt;
+  }
+}
+
+@page :first {
+  @top-left { content: none; border: none; }
+  @top-right { content: none; border: none; }
+}
+
+/* --- Body Text --- */
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/* --- Title (Markdown `#`) --- */
+h1 {
+  string-set: doc-title content();
+  font-family: 'Lato', sans-serif;
+  font-size: 28pt;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 4pt;
+  border-bottom: 2pt solid #4a2f83;
+  padding-bottom: 4pt;
+  break-after: avoid;
+}
+
+/* --- Subtitle (Italic paragraph directly following `#`) --- */
+h1 + p,
+h1 + p em {
+  font-family: 'Lato', sans-serif;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: 400;
+  color: #595959;
+  margin-top: 0;
+  margin-bottom: 16pt;
+  display: block;
+}
+
+/* --- Heading 1 (Markdown `##`) --- */
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 20pt;
+  font-weight: 700;
+  color: #4a2f83;
+  line-height: 1.25;
+  margin-top: 18pt;
+  margin-bottom: 8pt;
+  border-bottom: 0.5pt solid #cbd5e1;
+  padding-bottom: 3pt;
+  break-after: avoid;
+}
+
+/* --- Heading 2 (Markdown `###`) --- */
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16pt;
+  font-weight: 400;
+  color: #4a2f83;
+  line-height: 1.3;
+  margin-top: 14pt;
+  margin-bottom: 6pt;
+  break-after: avoid;
+}
+
+/* --- Heading 3 (Markdown `####`) --- */
+h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 14pt;
+  font-style: italic;
+  font-weight: 400;
+  color: #4a2f83;
+  line-height: 1.3;
+  margin-top: 12pt;
+  margin-bottom: 4pt;
+  break-after: avoid;
+}
+
+/* --- Lists & Paragraphs --- */
+p {
+  margin-top: 0;
+  margin-bottom: 8pt;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 10pt;
+  padding-left: 20pt;
+}
+
+li {
+  margin-bottom: 4pt;
+  break-inside: avoid;
+}
+
+/* --- Images & Teardown Photos --- */
+img {
+  max-width: 100%;
+  max-height: 230px;
+  height: auto;
+  display: block;
+  margin: 8pt auto 2pt auto;
+  border-radius: 2px;
+  border: 0.5pt solid #cbd5e1;
+  break-inside: avoid;
+}
+
+/* Captions directly below images */
+img + em,
+p > em:only-child {
+  display: block;
+  font-size: 10pt;
+  font-style: italic;
+  color: #595959;
+  text-align: center;
+  margin-bottom: 10pt;
+  break-before: avoid;
+}
+
+/* Consecutive side-by-side images */
+p:has(> img + img) {
+  display: flex;
+  gap: 10pt;
+  justify-content: center;
+  align-items: center;
+  break-inside: avoid;
+}
+
+p:has(> img + img) img {
+  max-width: 48%;
+  max-height: 170px;
+  margin: 0;
+}
+
+/* --- Blockquotes (Safety, Tips, Cautions) --- */
+blockquote {
+  margin: 10pt 0;
+  padding: 8pt 12pt;
+  background-color: #f8fafc;
+  border-left: 4pt solid #4a2f83;
+  border-radius: 0 4px 4px 0;
+  break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0;
+  font-size: 11pt;
+  color: #000000;
+}
+
+blockquote ul {
+  margin: 6pt 0 0 0;
+  padding-left: 16pt;
+}
+
+hr {
+  border: none;
+  border-top: 0.5pt solid #e2e8f0;
+  margin: 14pt 0;
+}

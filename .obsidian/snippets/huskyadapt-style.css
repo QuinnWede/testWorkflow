@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Obsidian Live Preview Style Override (HuskyADAPT)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Apply font to editor */
+.markdown-rendered,
+.cm-content {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 16px !important; /* Screen equivalent of 12pt */
+  color: #000000 !important;
+}
+
+/* Title (#) */
+.cm-header-1,
+.markdown-rendered h1 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 2.3rem !important; /* ~28pt */
+  font-weight: 700 !important;
+  color: #000000 !important;
+  padding-bottom: 4px !important;
+}
+
+/* Subtitle (first line under title) */
+.markdown-rendered h1 + p em,
+.cm-line:has(em):first-of-type {
+  font-size: 1.15rem !important; /* ~14pt */
+  font-style: normal !important;
+  font-weight: 400 !important;
+  color: #595959 !important;
+}
+
+/* Heading 1 (##) */
+.cm-header-2,
+.markdown-rendered h2 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 1.65rem !important; /* ~20pt */
+  font-weight: 700 !important;
+  color: #4a2f83 !important;
+}
+
+/* Heading 2 (###) */
+.cm-header-3,
+.markdown-rendered h3 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 1.3rem !important; /* ~16pt */
+  font-weight: 400 !important;
+  color: #4a2f83 !important;
+}
+
+/* Heading 3 (####) */
+.cm-header-4,
+.markdown-rendered h4 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 1.15rem !important; /* ~14pt */
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #4a2f83 !important;
+}
+
+/* Blockquote */
+.markdown-rendered blockquote,
+.cm-quote {
+  border-left: 4px solid #4a2f83 !important;
+  background-color: #f8fafc !important;
+}

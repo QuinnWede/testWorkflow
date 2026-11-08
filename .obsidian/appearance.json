@@ -1,1 +1,7 @@
-{}
+{
+  "cssTheme": "",
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "huskyadapt-style"
+  ]
+}

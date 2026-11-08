@@ -1,5 +1,7 @@
 [
   "obsidian-paste-image-rename",
   "obsidian-linter",
-  "obsidian-git"
+  "obsidian-git",
+  "templater-obsidian",
+  "markdown-heading-links"
 ]
