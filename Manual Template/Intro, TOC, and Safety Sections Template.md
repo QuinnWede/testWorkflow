@@ -12,16 +12,13 @@ Description of what the buttons on the toy does. Description of what the guide e
 
 *Image subtitle*
 
-
 ![Light, sound, and motion indicators (replace this with alt text)](./assets/placeholderImage.png)
 
 Description of what the buttons on the toy does (see the videos on the product listing for a video demonstration).
 
-
 ![Difficulty indicator (replace this with alt text)](./assets/placeholderImage.png)
 
 Description of skills needed for this project.
-
 
 - **Link:** [descriptiveLinkText](https://linkToToy.com)
 - **Name:** Toy name from the product listing
