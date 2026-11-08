@@ -1,21 +1,28 @@
-name: Compile Accessible PDFs
+name: Compile and Save PDFs to Repo
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'manuals/**'
+      # Only run when Markdown files or styles change (ignores PDF pushes)
+      - 'manuals/**/*.md'
       - 'styles/**'
-  workflow_dispatch: # Allows manual triggering from GitHub web UI
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build-manuals:
+  build-and-commit-pdfs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          # Fetches full history so git push works smoothly
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,26 +37,32 @@ jobs:
 
       - name: Compile Markdown Files to PDF
         run: |
-          mkdir -p dist
-          
-          # Find all markdown files in manuals/ and compile them individually
           find manuals -name "*.md" | while read -r mdfile; do
             dir=$(dirname "$mdfile")
             filename=$(basename "$mdfile" .md)
-            echo "Compiling $mdfile to dist/${filename}.pdf..."
+            pdf_path="${dir}/${filename}.pdf"
             
-            # 1. Run pandoc relative to the manual folder so local /assets resolve
-            # 2. Pipe semantic HTML into WeasyPrint with custom CSS applied
+            echo "Compiling $mdfile to $pdf_path..."
+            
             pandoc "$mdfile" \
               --from=gfm \
               --to=html5 \
               --resource-path="$dir" \
-              | weasyprint -s styles/pdf-style.css - "dist/${filename}.pdf"
+              | weasyprint -s styles/pdf-style.css - "$pdf_path"
           done
 
-      - name: Upload Compiled PDFs as Release Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: adaptation-guides-pdf
-          path: dist/*.pdf
-          retention-days: 30
+      - name: Commit and Push Generated PDFs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage all newly created or updated PDFs
+          git add manuals/**/*.pdf
+          
+          # Only commit if there are changes to avoid empty commit errors
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-compile manual PDFs [skip ci]"
+            git push origin main
+          else
+            echo "No PDF changes detected."
+          fi
